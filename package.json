@@ -4,13 +4,20 @@
   "description": "It's a bootstrap dropdown for react.js ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp dev",
+    "prod": "gulp prod"
   },
   "keywords": [
     "react",
     "bootstrap",
     "dropdown",
     "select"
+  ],
+  "files": [
+    "README.md",
+    "index.js",
+    "dist/",
+    "lib/"
   ],
   "author": "AllenFang",
   "license": "MIT",
@@ -21,5 +28,8 @@
     "browserify": "~9.0.3",
     "vinyl-source-stream": "~1.1.0",
     "react": "0.13.0"
+  },
+  "dependencies": {
+    "classnames": "~1.2.0"
   }
 }

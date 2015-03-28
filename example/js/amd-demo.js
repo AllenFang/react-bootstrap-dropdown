@@ -8,24 +8,33 @@ function select(item){
 let items = [
 	{
 		text: "Action",
-		value: "1"
+		value: "1",
+    disabled: false
 	},
 	{
 		text: "Another action",
-		value: "2"
+		value: "2",
+    disabled: true
+	},
+	{
+		text: "",
+		value: "",
+    disabled: false,
+		isDivider: true
 	},
 	{
 		text: "Something else here",
-		value: "3"
+		value: "3",
+    disabled: false
 	},
 	{
 		text: "Separated link",
-		value: "4"
+		value: "4",
+    disabled: false
 	},
 ];
 
 React.render(
-	// <Dropdown callback={gogo}/>,
 	<Dropdown
 		title="MyDropdown"
 		items={items}

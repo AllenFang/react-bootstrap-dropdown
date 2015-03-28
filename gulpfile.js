@@ -10,13 +10,14 @@ var demo     = false;
 gulp.task("default", ["prod"]);
 
 gulp.task("prod", function(){
-	browserifing("./index.js", "bundle.js", "./build");
+	browserifing("./index.js", "react-bootstrap-dropdown.min.js", "./dist");
 });
 
-gulp.task("dev", function(){
+gulp.task("dev", ["prod"], function(){
 	watching = true;
 	demo = true;
-	browserifing("./example/js/demo.js", "demo.bundle.js", "./example/js");
+	browserifing("./example/js/amd-demo.js", "amd-demo.bundle.js", "./example/js");
+	browserifing("./example/js/browser-demo.js", "browser-demo.bundle.js", "./example/js");
 });
 
 function browserifing(main, bundleName, dest){
