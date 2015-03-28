@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "It's a bootstrap dropdown for react.js ",
   "main": "index.js",
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/AllenFang/react-bootstrap-dropdown.git"
+  },
   "scripts": {
     "dev": "gulp dev",
     "prod": "gulp prod"
