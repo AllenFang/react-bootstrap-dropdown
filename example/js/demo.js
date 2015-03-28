@@ -1,12 +1,34 @@
 import React from 'react';
-// import Test from '../../src/test';
-import Test from 'react-bootstrap-dropdown';
+import Dropdown from 'react-bootstrap-dropdown';
 
-function gogo(xxx){
-	alert(xxx+"   4");
+function select(item){
+	alert(item.text+","+item.value);
 }
 
+let items = [
+	{
+		text: "Action",
+		value: "1"
+	},
+	{
+		text: "Another action",
+		value: "2"
+	},
+	{
+		text: "Something else here",
+		value: "3"
+	},
+	{
+		text: "Separated link",
+		value: "4"
+	},
+];
+
 React.render(
-	<Test callback={gogo}/>,
+	// <Dropdown callback={gogo}/>,
+	<Dropdown
+		title="MyDropdown"
+		items={items}
+		onSelect={select} />,
 	document.getElementById("example")
 );

@@ -9,17 +9,15 @@ var demo     = false;
 
 gulp.task("default", ["prod"]);
 
-gulp.task("prod",  function(){
+gulp.task("prod", function(){
 	browserifing("./index.js", "bundle.js", "./build");
 });
 
-gulp.task("dev",  ['enable-watch-mode', 'enable-demo-mode'], function(){
+gulp.task("dev", function(){
+	watching = true;
+	demo = true;
 	browserifing("./example/js/demo.js", "demo.bundle.js", "./example/js");
 });
-
-gulp.task('enable-watch-mode', function() { watching = true; });
-
-gulp.task('enable-demo-mode', function() { demo = true; });
 
 function browserifing(main, bundleName, dest){
 	var b = browserify({
@@ -32,7 +30,7 @@ function browserifing(main, bundleName, dest){
 	});
 
 	if(demo)
-		b = b.require(require.resolve('./lib/DropdownButton.js'),
+		b = b.require(require.resolve('./lib/Dropdown.js'),
 				{ expose: 'react-bootstrap-dropdown' });
 
 	if(watching){
@@ -41,7 +39,6 @@ function browserifing(main, bundleName, dest){
 			bundle(b, bundleName, dest);
 		});
 	}
-
 	bundle(b, bundleName, dest);
 }
 

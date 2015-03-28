@@ -1,2 +1,2 @@
-import bsDropdown from './lib/DropdownButton';
+import bsDropdown from './lib/Dropdown';
 export default bsDropdown;
