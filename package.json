@@ -1,0 +1,25 @@
+{
+  "name": "react-bootstrap-dropdown",
+  "version": "0.1.0",
+  "description": "It's a bootstrap dropdown for react.js ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "bootstrap",
+    "dropdown",
+    "select"
+  ],
+  "author": "AllenFang",
+  "license": "MIT",
+  "devDependencies": {
+    "react": "~0.13.1",
+    "gulp": "~3.8.11",
+    "babelify": "~5.0.4",
+    "watchify": "~2.6.1",
+    "browserify": "~9.0.3",
+    "vinyl-source-stream": "~1.1.0"
+  }
+}
