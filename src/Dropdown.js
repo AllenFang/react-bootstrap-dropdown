@@ -4,11 +4,12 @@ import DropdownMenu from './DropdownMenu';
 
 var DropDown = React.createClass({
 	getInitialState() {
-    return {title: null};
+    return {title: "Dropdown"};
   },
 
 	componentDidMount(){
-		this.setState({title: this.props.title});
+		if(typeof this.props.title !== "undefined")
+			this.setState({title: this.props.title});
 	},
 
 	handleTitleAndSelect(item){
@@ -19,7 +20,7 @@ var DropDown = React.createClass({
 	render(){
 		return(
       <div className="dropdown">
-  			<DropdownButton>{this.state.title}</DropdownButton>
+  			<DropdownButton disabled={this.props.disabled}>{this.state.title}</DropdownButton>
   			<DropdownMenu items={this.props.items} onSelect={this.handleTitleAndSelect} />
 			</div>
 		)

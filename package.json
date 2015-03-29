@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-dropdown",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "It's a bootstrap dropdown for react.js ",
   "main": "./lib/index.js",
   "repository": {

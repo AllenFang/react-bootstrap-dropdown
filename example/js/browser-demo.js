@@ -4,39 +4,98 @@ function select(item){
 	alert(item.text+","+item.value);
 }
 
-let items = [
+let demo1 = [
 	{
 		text: "Action",
-		value: "1",
-    disabled: false
+		value: "1"
 	},
 	{
 		text: "Another action",
-		value: "2",
-    disabled: true
+		value: "2"
 	},
-  {
+	{
+		text: "Something else here",
+		value: "3"
+	},
+	{
+		text: "Separated link",
+		value: "4"
+	},
+];
+
+let demo2 = [
+	{
+		text: "Action",
+		value: "1"
+	},
+	{
+		text: "Another action",
+		value: "2"
+	},
+	{
 		text: "",
 		value: "",
-    disabled: false,
 		isDivider: true
 	},
 	{
 		text: "Something else here",
-		value: "3",
-    disabled: false
+		value: "3"
 	},
 	{
 		text: "Separated link",
-		value: "4",
-    disabled: false
+		value: "4"
 	},
 ];
-//the Dropdown comes from window obj
+
+let demo3 = [
+	{
+		text: "Action",
+		value: "1"
+	},
+	{
+		text: "Another action",
+		value: "2",
+		disabled: true
+	},
+	{
+		text: "Something else here",
+		value: "3"
+	},
+	{
+		text: "Separated link",
+		value: "4"
+	},
+];
+
+//the Dropdown coms from window obj
 React.render(
 	<Dropdown
 		title="MyDropdown"
-		items={items}
+		items={demo1}
 		onSelect={select} />,
-	document.getElementById("example")
+	document.getElementById("basic")
+);
+
+React.render(
+	<Dropdown
+		title="MyDropdown"
+		items={demo2}
+		onSelect={select} />,
+	document.getElementById("divider")
+);
+
+React.render(
+	<Dropdown
+		title="MyDropdown"
+		items={demo3}
+		onSelect={select} />,
+	document.getElementById("item-disabled")
+);
+
+React.render(
+	<Dropdown
+		title="MyDropdown"
+		items={demo1}
+		disabled="true"/>,
+	document.getElementById("disabled")
 );

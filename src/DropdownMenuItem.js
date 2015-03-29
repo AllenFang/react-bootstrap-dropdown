@@ -20,13 +20,14 @@ var DropdownMenuItem = React.createClass({
   },
 
   render(){
-    let isDivider = typeof this.props.isDivider !== "undefined" && this.props.isDivider;
-    let classes = classSet({
+    var isDivider = typeof this.props.isDivider !== "undefined" && this.props.isDivider;
+    var isDisabled = typeof this.props.disabled !== "undefined" && this.props.disabled;
+    var classes = classSet({
       'divider': isDivider,
-      'disabled': this.props.disabled
+      'disabled': isDisabled
     });
 
-    let content = this.renderItemContent(isDivider);
+    var content = this.renderItemContent(isDivider);
 
     return(
         <li role="presentation" className={classes}>
@@ -39,7 +40,7 @@ var DropdownMenuItem = React.createClass({
     if(isDivider) return null
     else return (
       <a role="menuitem" tabindex="-1" href="#"
-        value={this.props.value} 
+        value={this.props.value}
         onClick={this.handleSelect}>
           {this.props.children}
       </a>
