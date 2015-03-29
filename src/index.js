@@ -1,3 +1,3 @@
-import bsDropdown from './lib/Dropdown';
+import bsDropdown from './Dropdown';
 window.Dropdown = bsDropdown;
 export default bsDropdown;

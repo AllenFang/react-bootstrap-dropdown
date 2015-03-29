@@ -2,6 +2,7 @@ var gulp       = require('gulp');
 var browserify = require('browserify');
 var watchify   = require('watchify');
 var source 		 = require("vinyl-source-stream");
+var babel      = require('gulp-babel');
 
 var watching = false;
 var demo     = false;
@@ -10,7 +11,15 @@ var demo     = false;
 gulp.task("default", ["prod"]);
 
 gulp.task("prod", function(){
-	browserifing("./index.js", "react-bootstrap-dropdown.min.js", "./dist");
+	gulp.src('./src/*.js')
+			.pipe(babel())
+			.pipe(gulp.dest('./lib'));
+	browserifing("./src/index.js", "react-bootstrap-dropdown.min.js", "./dist");
+	// babel();
+	// return
+	// 	gulp.src('./src')
+  //       .pipe(babel())
+  //       .pipe(gulp.dest('./lib'));
 });
 
 gulp.task("dev", ["prod"], function(){
@@ -19,6 +28,10 @@ gulp.task("dev", ["prod"], function(){
 	browserifing("./example/js/amd-demo.js", "amd-demo.bundle.js", "./example/js");
 	browserifing("./example/js/browser-demo.js", "browser-demo.bundle.js", "./example/js");
 });
+
+function babel(){
+
+}
 
 function browserifing(main, bundleName, dest){
 	var b = browserify({
@@ -31,7 +44,7 @@ function browserifing(main, bundleName, dest){
 	});
 
 	if(demo)
-		b = b.require(require.resolve('./lib/Dropdown.js'),
+		b = b.require(require.resolve('./src/Dropdown.js'),
 				{ expose: 'react-bootstrap-dropdown' });
 
 	if(watching){
