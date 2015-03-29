@@ -87,5 +87,5 @@ React.render(
 The reactbsDropdown setting
 
 Use ```title``` to specify the text show on the dropdown
-Use ```item``` to specify the dropdown items
+Use ```item``` to specify the dropdown items   
 Use ```onSelect``` to listen a select event on dropdown
