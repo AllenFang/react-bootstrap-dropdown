@@ -21,7 +21,11 @@ $ gulp prod #for production
 ```
 
 ### Usage
-Use reactbsDropdown your react app
+Download reactbsDropdown first.
+```
+npm install react-bootstrap-dropdown --save
+```
+Use reactbsDropdown in your react app
 
 You can import reactbsDropdown in module(CommonJS/AMD)
 ```
@@ -31,7 +35,9 @@ or in browser(window object)
 ```
 <script src="path/to/react-bootstrap-dropdown/react-bootstrap-dropdown.min.js" />
 ```
-After import reactbsDropdown, use it in your react app
+the react-bootstrap-dropdown.min.js file you can find in the dist folder
+
+After import reactbsDropdown, use it in your react app   
 
 ```
 // a callback function will be called if dropdown item select
