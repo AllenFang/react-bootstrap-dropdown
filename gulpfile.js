@@ -14,15 +14,25 @@ gulp.task("prod", function(){
 	gulp.src('./src/*.js')
 			.pipe(babel())
 			.pipe(gulp.dest('./lib'));
-	browserifing("./src/index.js", "react-bootstrap-dropdown.min.js", "./dist");
+	buildProdDist();
 });
 
-gulp.task("dev", ["prod"], function(){
+gulp.task("dev", function(){
 	watching = true;
+	buildDemoCode();
+	buildProdDist();
+});
+
+function buildDemoCode(){
 	demo = true;
 	browserifing("./example/js/amd-demo.js", "amd-demo.bundle.js", "./example/js");
 	browserifing("./example/js/browser-demo.js", "browser-demo.bundle.js", "./example/js");
-});
+}
+
+function buildProdDist(){
+	demo = false;
+	browserifing("./src/index.js", "react-bootstrap-dropdown.min.js", "./dist");
+}
 
 function browserifing(main, bundleName, dest){
 	var b = browserify({
@@ -50,9 +60,9 @@ function browserifing(main, bundleName, dest){
 function bundle(b, bundleName, dest){
 	b.bundle()
 	.on('error', function(err){
-      console.log(err.message);
-      this.end();
-    })
+		console.log(err.message);
+		this.end();
+  })
 	.on('end', function(){
 		console.log("building success.");
 		this.end();
