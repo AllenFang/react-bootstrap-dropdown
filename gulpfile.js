@@ -15,11 +15,6 @@ gulp.task("prod", function(){
 			.pipe(babel())
 			.pipe(gulp.dest('./lib'));
 	browserifing("./src/index.js", "react-bootstrap-dropdown.min.js", "./dist");
-	// babel();
-	// return
-	// 	gulp.src('./src')
-  //       .pipe(babel())
-  //       .pipe(gulp.dest('./lib'));
 });
 
 gulp.task("dev", ["prod"], function(){
@@ -28,10 +23,6 @@ gulp.task("dev", ["prod"], function(){
 	browserifing("./example/js/amd-demo.js", "amd-demo.bundle.js", "./example/js");
 	browserifing("./example/js/browser-demo.js", "browser-demo.bundle.js", "./example/js");
 });
-
-function babel(){
-
-}
 
 function browserifing(main, bundleName, dest){
 	var b = browserify({
