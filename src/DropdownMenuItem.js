@@ -1,12 +1,7 @@
 import React from 'react';
 import classSet from 'classnames';
 
-var DropdownMenuItem = React.createClass({
-  propTypes: {
-    isDivider: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    value: React.PropTypes.string
-  },
+class DropdownMenuItem extends React.Component{
 
   handleSelect(e){
     e.preventDefault();
@@ -17,35 +12,42 @@ var DropdownMenuItem = React.createClass({
       };
       this.props.onSelect(selectedItem);
     }
-  },
+  }
 
   render(){
-    var isDivider = typeof this.props.isDivider !== "undefined" && this.props.isDivider;
-    var isDisabled = typeof this.props.disabled !== "undefined" && this.props.disabled;
     var classes = classSet({
-      'divider': isDivider,
-      'disabled': isDisabled
+      'divider': this.props.isDivider,
+      'disabled': this.props.disabled
     });
 
-    var content = this.renderItemContent(isDivider);
+    var content = this.renderItemContent();
 
     return(
         <li role="presentation" className={classes}>
           {content}
         </li>
     )
-  },
+  }
 
-  renderItemContent(isDivider){
-    if(isDivider) return null
+  renderItemContent(){
+    if(this.props.isDivider) return null
     else return (
       <a role="menuitem" tabindex="-1" href="#"
         value={this.props.value}
-        onClick={this.handleSelect}>
+        onClick={this.handleSelect.bind(this)}>
           {this.props.children}
       </a>
     )
   }
-});
+}
+DropdownMenuItem.propTypes = {
+  isDivider: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
+  value: React.PropTypes.string
+};
+DropdownMenuItem.defaultProps = {
+  isDivider: false,
+  disabled: false
+};
 
 export default DropdownMenuItem;

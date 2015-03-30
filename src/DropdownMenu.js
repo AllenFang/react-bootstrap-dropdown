@@ -1,7 +1,7 @@
 import React from 'react';
 import DropdownMenuItem from './DropdownMenuItem';
 
-var DropdownMenu = React.createClass({
+class DropdownMenu extends React.Component{
   render(){
     var self = this;
     var menuItems = this.props.items.map(function(item){
@@ -21,6 +21,6 @@ var DropdownMenu = React.createClass({
       </ul>
     )
   }
-});
+}
 
 export default DropdownMenu;

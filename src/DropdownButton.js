@@ -1,13 +1,11 @@
 import React from 'react';
 import classSet from 'classnames';
 
-var DropDown = React.createClass({
+class DropDownButton extends React.Component{
 
 	render(){
-
-		var isDisabled = typeof this.props.disabled !== "undefined" && this.props.disabled;
     var classes = classSet("btn", "btn-default", "dropdown-toggle", {
-      'disabled': isDisabled
+      'disabled': this.props.disabled
     });
 
 		return(
@@ -18,8 +16,6 @@ var DropDown = React.createClass({
 		  </button>
 		)
 	}
-});
+};
 
-
-
-export default DropDown;
+export default DropDownButton;
