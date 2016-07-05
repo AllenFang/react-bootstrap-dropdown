@@ -28,10 +28,15 @@ class DropDownButton extends React.Component {
 					onClick={this.toggleOpen.bind(this)}
 							aria-expanded={this.state.opened}>
 		    {this.props.children}
-		    <span className="caret"></span>
+		    <span className={this.props.caretClass}></span>
 		  </button>
 		)
 	}
 };
+
+DropDownButton.propTypes = {
+	caretClass: React.PropTypes.string.isRequired
+};
+
 
 export default DropDownButton;

@@ -53,6 +53,7 @@ class DropDown extends React.Component{
 					onMouseUp={this.handleMouseUp.bind(this)}>
   			<DropdownButton
   			 id={id}
+  			 caretClass={this.props.caretClass}
   			disabled={this.props.disabled} 
   			toggleOpen={this.toogleOpen.bind(this)}>{this.state.title}
   			</DropdownButton>
@@ -89,12 +90,14 @@ DropDown.propTypes = {
 	title: React.PropTypes.string,
 	items: React.PropTypes.array,
 	disabled: React.PropTypes.bool,
-	updateTitle: React.PropTypes.bool
+	updateTitle: React.PropTypes.bool,
+	caretClass: React.PropTypes.string
 };
 DropDown.defaultProps = {
 	title: "Dropdown",
 	disabled: false,
-	updateTitle: true
+	updateTitle: true,
+	caretClass: "caret"
 };
 
 
