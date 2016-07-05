@@ -4,9 +4,10 @@ import DropdownMenuItem from './DropdownMenuItem';
 class DropdownMenu extends React.Component{
   render(){
     var self = this;
-    var menuItems = this.props.items.map(function(item){
+    var menuItems = this.props.items.map(function(item, key){
         return(
           <DropdownMenuItem
+          	key={key}
             value={item.value}
             onSelect={self.props.onSelect}
             disabled={item.disabled}
