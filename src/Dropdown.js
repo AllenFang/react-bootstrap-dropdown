@@ -12,6 +12,11 @@ class DropDown extends React.Component{
 
 	componentDidMount(){
 		this.setState({title: this.props.title, open: false});
+		document.addEventListener('click', this.handleDocumentClick.bind(this));
+	}
+
+	componentWillUnmount() {
+	    document.removeEventListener('click', this.handleDocumentClick.bind(this));
 	}
 
 	handleTitleAndSelect(item){
@@ -43,7 +48,9 @@ class DropDown extends React.Component{
 	      'open': this.state.open
 	    });
 
-		return <div className={classes}>
+		return <div className={classes} 
+					onMouseDown={this.handleMouseDown.bind(this)}
+					onMouseUp={this.handleMouseUp.bind(this)}>
   			<DropdownButton
   			 id={id}
   			disabled={this.props.disabled} 
@@ -53,7 +60,31 @@ class DropDown extends React.Component{
 			</div>
 		
 	}
+
+	// handle click outside of element
+
+	handleDocumentClick(e) {
+		
+	    var wasDown = this.mouseDownOnModal;
+	    var wasUp = this.mouseUpOnModal;
+	    this.mouseDownOnModal = false;
+	    this.mouseUpOnModal = false;
+	
+	    if (!wasDown && !wasUp && this.state.open) {
+	    	this.toogleOpen();
+	    }
+	        
+	}
+
+	handleMouseDown() {
+	    this.mouseDownOnModal = true;
+	}
+
+	handleMouseUp() {
+	    this.mouseUpOnModal = true;
+	}
 }
+
 DropDown.propTypes = {
 	title: React.PropTypes.string,
 	items: React.PropTypes.array,
