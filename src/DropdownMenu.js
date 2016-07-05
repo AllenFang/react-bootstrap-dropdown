@@ -17,7 +17,7 @@ class DropdownMenu extends React.Component{
         )
     });
     return(
-      <ul className="dropdown-menu" role="menu" aria-labelledby="bsDropDown">
+      <ul className="dropdown-menu" role="menu" aria-labelledby={this.props.id}>
         {menuItems}
       </ul>
     )
