@@ -21,12 +21,17 @@ class DropDown extends React.Component{
 
 	handleTitleAndSelect(item){
 
+		// update the title state and autoclose (use single state change)
 		if (this.props.updateTitle) {
-			this.setState({title: item.text});
-		}
+			var state = this.state;
+			state.title =  item.text;
+			state.open = false;
+			this.setState(state);
+		} else {
+			// close the dropdown
+			this.toogleOpen();
 
-		// close the dropdown
-		this.toogleOpen();
+		}
 
 		this.props.onSelect(item);
 	}
