@@ -32,7 +32,7 @@ class DropdownMenuItem extends React.Component{
   renderItemContent(){
     if(this.props.isDivider) return null
     else return (
-      <a role="menuitem" tabindex="-1" href="#"
+      <a role="menuitem" tabIndex="-1" href="#"
         value={this.props.value}
         onClick={this.handleSelect.bind(this)}>
           {this.props.children}
