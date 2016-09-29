@@ -10,6 +10,16 @@ class DropDown extends React.Component{
 		this.state = {title: null, open: false};
 	}
 
+	/**
+	 * Update the state if props has changed
+	 */
+	componentWillReceiveProps(nextProps, nextContext) {
+		// update title if static and has changed
+		if (!this.props.updateTitle && nextProps.title != this.props.title) {
+			 this.setState({title: nextProps.title, open: this.state.open});
+		}
+	}
+
 	componentDidMount(){
 		this.setState({title: this.props.title, open: false});
 		document.addEventListener('click', this.handleDocumentClick.bind(this));
@@ -48,38 +58,38 @@ class DropDown extends React.Component{
 
 	render(){
 		let id = this._reactInternalInstance._rootNodeID;
-		
+
 		var classes = classSet("dropdown", {
 	      'open': this.state.open
 	    });
 
-		return <div className={classes} 
+		return <div className={classes}
 					onMouseDown={this.handleMouseDown.bind(this)}
 					onMouseUp={this.handleMouseUp.bind(this)}>
   			<DropdownButton
   			 id={id}
   			 caretClass={this.props.caretClass}
-  			disabled={this.props.disabled} 
+  			disabled={this.props.disabled}
   			toggleOpen={this.toogleOpen.bind(this)}>{this.state.title}
   			</DropdownButton>
   			<DropdownMenu items={this.props.items} onSelect={this.handleTitleAndSelect.bind(this)} id={id}/>
 			</div>
-		
+
 	}
 
 	// handle click outside of element
 
 	handleDocumentClick(e) {
-		
+
 	    var wasDown = this.mouseDownOnModal;
 	    var wasUp = this.mouseUpOnModal;
 	    this.mouseDownOnModal = false;
 	    this.mouseUpOnModal = false;
-	
+
 	    if (!wasDown && !wasUp && this.state.open) {
 	    	this.toogleOpen();
 	    }
-	        
+
 	}
 
 	handleMouseDown() {
